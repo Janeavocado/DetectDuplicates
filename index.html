@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Data Collection</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div class="container">
+    <h1>Data Collection</h1>
+    <form id="dataForm">
+      <textarea id="pasteArea" placeholder="Paste data here"></textarea>
+      <button type="submit">Insert Data</button>
+    </form>
+    <table>
+      <thead>
+        <tr>
+          <th>Delete</th>
+          <th>Account Code</th>
+          <th>Account Description</th>
+          <th>Workorder</th>
+          <th>Object Code</th>
+          <th>Object Description</th>
+          <th>Create Date</th>
+          <th>Required By Date</th>
+          <th>Quantity</th>
+          <th>Apply Charge</th>
+          <th>Pickup Addr Line1</th>
+          <th>Pickup Addr Route</th>
+          <th>Action Code</th>
+        </tr>
+      </thead>
+      <tbody id="dataBody"></tbody>
+    </table>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
