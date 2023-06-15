@@ -45,6 +45,13 @@ function insertData(event) {
     }
   });
 
+  // Check if any duplicates were found
+  const duplicatesExist = rowData.some(row => row.isDuplicated);
+
+  if (duplicatesExist) {
+    alert('Duplicate data found!');
+  }
+
   // Insert data
   data.unshift(...rowData);
 
@@ -57,6 +64,7 @@ function insertData(event) {
   // Clear the textarea
   pasteArea.value = '';
 }
+
 
 // Function to delete data
 function deleteData(index) {

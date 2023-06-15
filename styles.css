@@ -23,6 +23,7 @@ body {
 h1 {
   margin-bottom: 20px;
   text-align: center;
+  color: #333;
 }
 
 /* Form styles */
@@ -47,6 +48,7 @@ button[type="submit"] {
   border: none;
   border-radius: 4px;
   cursor: pointer;
+  transition: background-color 0.3s ease;
 }
 
 button[type="submit"]:hover {
@@ -70,6 +72,7 @@ th, td {
 
 th {
   font-weight: bold;
+  color: #333;
 }
 
 tr:nth-child(even) {
@@ -84,6 +87,7 @@ tr:nth-child(even) {
   border: none;
   border-radius: 4px;
   cursor: pointer;
+  transition: background-color 0.3s ease;
 }
 
 .delete-button:hover {
