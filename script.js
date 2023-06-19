@@ -65,10 +65,50 @@ function insertData(event) {
   pasteArea.value = '';
 }
 
-
-// Function to delete data
+// Function to delete data by index
 function deleteData(index) {
+  const isConfirmed = confirm('Are you sure you want to delete this row?');
+
+  if (!isConfirmed) {
+    return;
+  }
+
   data.splice(index, 1);
+
+  // Save updated data to local storage
+  localStorage.setItem('collectedData', JSON.stringify(data));
+
+  // Refresh the table
+  displayData();
+}
+
+// Function to select all duplicate rows
+function selectAllDuplicates() {
+  const duplicateRows = Array.from(document.querySelectorAll('.duplicate-row'));
+  duplicateRows.forEach(row => {
+    const checkbox = row.querySelector('input[name="rowCheckbox"]');
+    checkbox.checked = true;
+  });
+}
+
+// Function to delete selected data
+function deleteSelectedData() {
+  const selectedRows = Array.from(document.querySelectorAll('input[name="rowCheckbox"]:checked'))
+    .map(checkbox => parseInt(checkbox.value));
+
+  if (selectedRows.length === 0) {
+    alert('Please select at least one row to delete.');
+    return;
+  }
+
+  const isConfirmed = confirm('Are you sure you want to delete the selected rows?');
+
+  if (!isConfirmed) {
+    return;
+  }
+
+  // Remove selected rows from data
+  data = data.filter((_, index) => !selectedRows.includes(index));
 
   // Save updated data to local storage
   localStorage.setItem('collectedData', JSON.stringify(data));
@@ -89,6 +129,16 @@ function displayData() {
       row.classList.add('duplicate-row');
     }
 
+    // Checkbox column
+    const checkboxCell = document.createElement('td');
+    const checkbox = document.createElement('input');
+    checkbox.type = 'checkbox';
+    checkbox.name = 'rowCheckbox';
+    checkbox.value = index;
+    checkboxCell.appendChild(checkbox);
+    row.appendChild(checkboxCell);
+
+    // Delete button column
     const deleteCell = document.createElement('td');
     const deleteButton = document.createElement('button');
     deleteButton.textContent = 'Delete';
@@ -121,3 +171,11 @@ document.addEventListener('DOMContentLoaded', () => {
 // Add event listener to the form
 const form = document.getElementById('dataForm');
 form.addEventListener('submit', insertData);
+
+// Add event listener to the "Delete Selected" button
+const deleteSelectedButton = document.getElementById('deleteSelectedButton');
+deleteSelectedButton.addEventListener('click', deleteSelectedData);
+
+// Add event listener to the "Select All Duplicates" button
+const selectAllDuplicatesButton = document.getElementById('selectAllDuplicatesButton');
+selectAllDuplicatesButton.addEventListener('click', selectAllDuplicates);

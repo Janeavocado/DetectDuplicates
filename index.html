@@ -1,11 +1,13 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Data Collection</title>
   <link rel="stylesheet" href="styles.css">
 </head>
+
 <body>
   <div class="container">
     <h1>Data Collection</h1>
@@ -13,9 +15,14 @@
       <textarea id="pasteArea" placeholder="Paste data here"></textarea>
       <button type="submit">Insert Data</button>
     </form>
+    <div class="button-wrapper">
+      <button id="selectAllDuplicatesButton" class="select-all-duplicates-button">Select All Duplicates</button>
+      <button id="deleteSelectedButton" class="delete-selected-button">Delete Selected</button>
+    </div>
     <table>
       <thead>
         <tr>
+          <th>Select</th>
           <th>Delete</th>
           <th>Account Code</th>
           <th>Account Description</th>
@@ -37,4 +44,5 @@
 
   <script src="script.js"></script>
 </body>
+
 </html>
